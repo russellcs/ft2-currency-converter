@@ -16,6 +16,15 @@ class App extends Component {
     this.setState({ [e.target.id]: e.target.value });
   };
 
+  addCurrency = () => {
+    console.log(this.state);
+
+    const copy = { ...this.state };
+    copy.data.rates[this.state.addCurrency] = 5.5555;
+
+    this.setState({ ...copy });
+  };
+
   render() {
     console.log(this.state);
     const { data, current, inputValue } = this.state;
@@ -32,6 +41,9 @@ class App extends Component {
 
     return (
       <>
+        <p>Add currency</p>
+        <input type="text" onInput={this.onInput} id="addCurrency" />
+        <button onClick={this.addCurrency}>Add</button>
         <div id="error" class="error"></div>
         <div>
           <div class="container">
